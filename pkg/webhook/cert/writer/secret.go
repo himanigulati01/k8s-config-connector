@@ -134,6 +134,7 @@ func (s *secretCertWriter) read() (*generator.Artifacts, error) {
 		log.Error(err, "error reading secret", "secret", *s.Secret)
 		return nil, fmt.Errorf("error reading secret %v: %w", *s.Secret, err)
 	}
+	log.Info"successfully read secret", "secret", *s.Secret, "resourceVersion", secret.ResourceVersion)
 	certs := secretToCerts(secret)
 	if certs != nil {
 		// Store the CA for next usage.
