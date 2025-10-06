@@ -68,6 +68,7 @@ func handleCommon(dnsName string, ch certReadWriter) (*generator.Artifacts, bool
 
 	// Recreate the cert if it's invalid.
 	valid := validCert(certs, dnsName)
+	log.Info("certificate validation check returned", "valid", valid, "dnsName", dnsName)
 	if !valid {
 		log.Info("cert is invalid or expiring, regenerating a new one")
 		certs, err = ch.overwrite()
